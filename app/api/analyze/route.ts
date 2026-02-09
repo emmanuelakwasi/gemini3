@@ -12,7 +12,7 @@ const JPEG_QUALITY = 80;
 async function processImageForGemini(
   imageBase64: string
 ): Promise<{ mimeType: string; data: string; originalBytes: number; processedBytes: number }> {
-  const dataUrlMatch = /^data:(image\/\w+);base64,(.*)$/is.exec(imageBase64);
+  const dataUrlMatch = /^data:(image\/\w+);base64,([\s\S]*)$/i.exec(imageBase64);
   let mimeType = "image/jpeg";
   let b64 = imageBase64;
   if (dataUrlMatch) {
